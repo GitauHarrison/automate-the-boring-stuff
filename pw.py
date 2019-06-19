@@ -2,6 +2,11 @@
 
 
 #!python3 
+
+#first item in the sys.argv should be a string containing the program's filename
+
+
+
 # pw.py - An insecure password locker program.
 
 passwords = {'email': 'F7minlBDDuvMJuxESSKHFhTxFtjVB6', 
