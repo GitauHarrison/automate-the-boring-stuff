@@ -62,7 +62,15 @@ xmasRegex.findall('12 drummers, 11 pipers, 10 lords, 9 ladies, 8 maids, 7 swans,
 
 
 ##-----------------------------------
-#making your own character...use []
+#making your own character classes...use []
 ##------------------------------------
 vowelRegex = re.compile(r'[aeiouAEIOU]')
 vowelRegex.findall('Robocop eats baby food. BABY FOOD')
+
+
+##------------------------------------
+#Caret (^) character
+# it makes a negative character class (all the characters that are not in the charater class)
+##------------------------------------
+consonantRegex = re.compile(r'[^aeiouAEIOU]')
+consonantRegex.findall('Robocop eats baby food. BABY FOOD.')
