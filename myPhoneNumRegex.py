@@ -54,3 +54,15 @@ myPhoneNumRegex.findall('Cell:  415-555-9999 Work: 212-555-0000')
 #findall() returns a tuple if it has groups
 myPhoneNumRegex = re.compile(r'(\d\d\d)-(\d\d\d)-(\d\d\d\d)') #no groups
 myPhoneNumRegex.findall('Cell:  415-555-9999 Work: 212-555-0000')
+
+
+#More character classes
+xmasRegex = re.compile(r'\d+\s\w+')
+xmasRegex.findall('12 drummers, 11 pipers, 10 lords, 9 ladies, 8 maids, 7 swans, 6 geese, 5 rings, 4 birds, 3 hens, 2 doves, 1 partridge')
+
+
+##-----------------------------------
+#making your own character...use []
+##------------------------------------
+vowelRegex = re.compile(r'[aeiouAEIOU]')
+vowelRegex.findall('Robocop eats baby food. BABY FOOD')
