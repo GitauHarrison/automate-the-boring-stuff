@@ -31,3 +31,26 @@ mo2.group() #returns Batman
 myBatRegex = re.compile(r'Bat(wo)?man')
 mo3 = myBatRegex.search('The adventures of Batman')
 mo3.group() #returns Batman... (wo) group was optional
+
+##----------------
+#Greedy (returns longest possible value)
+# & 
+# Nongreedy (returns shortest possible value)...add a ? after the curly braces
+##----------------
+nongreedyHaRegex = re.compile(r'(Ha){3,5}?')
+mo4 = nongreedyHaRegex.search('HaHaHaHaHaHaHaHa')
+mo4.group()
+
+
+##----------------
+#findall() 
+##----------------
+
+#It returns all matched text as a list as long as there are no groups in the regex
+
+myPhoneNumRegex = re.compile(r'\d\d\d-\d\d\d-\d\d\d\d') #no groups
+myPhoneNumRegex.findall('Cell:  415-555-9999 Work: 212-555-0000')
+
+#findall() returns a tuple if it has groups
+myPhoneNumRegex = re.compile(r'(\d\d\d)-(\d\d\d)-(\d\d\d\d)') #no groups
+myPhoneNumRegex.findall('Cell:  415-555-9999 Work: 212-555-0000')
