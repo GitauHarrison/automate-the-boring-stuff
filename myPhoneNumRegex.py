@@ -74,3 +74,17 @@ vowelRegex.findall('Robocop eats baby food. BABY FOOD')
 ##------------------------------------
 consonantRegex = re.compile(r'[^aeiouAEIOU]')
 consonantRegex.findall('Robocop eats baby food. BABY FOOD.')
+
+
+##--------------------------------------
+#Caret (^) and dollar sign ($)
+# begin(^), end($)
+##--------------------------------------
+beginsWithHello = re.compile(r'^Hello ')
+beginsWithHello.search('Hello world') == None # returns True
+
+endsWithDigit = re.compile(r'\d$')
+endsWithDigit.search('jddhk5453')== None # returns True
+
+wholeStringIsNum = re.compile(r'\d+$')
+wholeStringIsNum.search('12345xyz67890') == None #returns True
