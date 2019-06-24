@@ -88,3 +88,20 @@ endsWithDigit.search('jddhk5453')== None # returns True
 
 wholeStringIsNum = re.compile(r'\d+$')
 wholeStringIsNum.search('12345xyz67890') == None #returns True
+
+
+##-------------------------------------
+# wildcard (.)
+# matches anything excluding  a new line
+##-------------------------------------
+atRegex = re.compile(r'.at') 
+mo8 = atRegex.search('The cat in the hat sat on the flat mat')
+#it will match anything with the character combination (at)
+
+
+##-------------------------------
+# Wildcard (.) with new lines
+#add re.DOTALL argument
+##-------------------------------
+newLineRegex = re.compile(r'.*', re.DOTALL)
+newLineRegex.search('Serve the public interest.\nProtect the innocent. \nUphold the law.').group()
