@@ -105,3 +105,36 @@ mo8 = atRegex.search('The cat in the hat sat on the flat mat')
 ##-------------------------------
 newLineRegex = re.compile(r'.*', re.DOTALL)
 newLineRegex.search('Serve the public interest.\nProtect the innocent. \nUphold the law.').group()
+
+
+##------------------------
+# Case Insensitive regex
+#re.IGNORECASE (re.I)
+##------------------------
+robocop = re.compile(r'robocop', re.I)
+robocop.search('ROBOCOP is part human, part machine, all cop.').group()
+
+##--------------
+#substituting strings with sub()
+##
+namesRegex = re.compile(r'Agent \w+')
+namesRegex.sub('CENSORED', 'Agent Alice gave secret documents to Agent Bob')
+
+#show only the first letter of their names
+agentNamesREgex = re.compile(r'Agent (w)\w*')
+agentNamesREgex.sub(r'1***', 'Agent Alice told Agent Carol that Agent Eve knew Agent Bob was a double agent.')
+
+
+
+##---------------------
+#Complex regex
+#USE re.VERBOSE (multiline regex)
+##---------------------
+phoneRegex = re.compile(r'''(
+    (\d{3}|\(\d{3}\))? #area code
+    (\s|-|\.)? #separator
+    \d{3} #first three digits
+    (\s|-|.) #separator
+    \d{4} #last four digits
+    (\s*(ext|x|ext.)\s*\d{2,5})? #extension
+    )''', re.VERBOSE)
