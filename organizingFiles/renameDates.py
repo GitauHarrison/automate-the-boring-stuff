@@ -30,9 +30,14 @@ for amerFilename in os.listdir('/home/gitau/Software Development'):
 
 
 #TODO: Form the European-style filename
+    euroFileName = beforePart + dayPart + '-' + monthPart + '-' + yearPart + afterPart
 
 
 #TODO: Get the full, absolute paths
-
+    absWorkingDirectory = os.path.abspath('.')
+    amerFilename = os.path.join(absWorkingDirectory, amerFilename)
+    euroFileName = os.path.join(absWorkingDirectory, euroFileName)
 
 #TODO: Rename the files
+    print('Renaming "%s" to "%s"...' % (amerFilename, euroFileName))
+    #shutil.move(ameriFileName, euroFileName) #uncomment after testing
