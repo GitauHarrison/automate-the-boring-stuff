@@ -8,3 +8,17 @@ Using the beautiful object, select an element from an HTML file
 You can find the number of elements in the file using the len() function
 You can find the string of an element using the str(object[]) function
 You can find the text of selected element using the object.getText[] method
+
+
+Example:
+import bs4, requests
+res = requests.get(url)
+fileObj = open('res.html', 'a')
+exampleSoup = bs4.BeautifulSoup(fileObj.read())
+elem = exampleSoup.select(tag)
+
+len(elem)
+type(elem[])
+str(elem[])
+elem[].getText()
+elem[].attrs
