@@ -22,3 +22,4 @@ type(elem[])
 str(elem[])
 elem[].getText()
 elem[].attrs
+elem.get('id')
