@@ -1,4 +1,4 @@
-#! usr/bin/python3
+#! python3
 
 # TO-DO 1:
 #import all necessary libraries
@@ -17,11 +17,11 @@ soup = bs4.BeautifulSoup(stock.text, 'html.parser')
 # TO-DO 4: 
 # Select relevant element from the page to get info
 # print the name and price of the product on the terminal
-elemName = soup.select('//*[@id="root"]/div/div/section[2]/div[1]/div[2]/section[1]/section/section[1]/div/h1')
+elemName = soup.select_one('#root > div > div > section.quotePageSnapshot > div.pseudoMainContent > div.snapshot__0569338b.snapshot > section.snapshotOverview__d5769afc.up__a7674eca > section > section.company__c1979f17 > div > h1')
 print(elemName)
 
-elemPrice = soup.find('span', attrs={'class': 'priceText__1853e8a5'})
-print(elemPrice)
+#elemPrice = soup.find('span', attrs={'class': 'priceText__1853e8a5'})
+#print(elemPrice)
 
 
 
