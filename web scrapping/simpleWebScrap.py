@@ -28,3 +28,5 @@ time.sleep(2)
 for link in soup.find_all('a'):
     #webbrowser.open_new_tab(link.get('href'))
     print(link.get('href'))
+
+print(soup.get_text())

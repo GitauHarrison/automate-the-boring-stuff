@@ -6,7 +6,7 @@ import requests, bs4, webbrowser
 
 # TO-DO 2: 
 # Create a requests object to download a html page
-stock = requests.get('https://www.bloomberg.com/quote/SPX:IND')
+stock = requests.get('https://www.digitalocean.com/community/tutorials/how-to-work-with-web-data-using-requests-and-beautiful-soup-with-python-3')
 stock.raise_for_status() # checks for successful access
 
 # TO-DO 3:
@@ -17,8 +17,9 @@ soup = bs4.BeautifulSoup(stock.text, 'html.parser')
 # TO-DO 4: 
 # Select relevant element from the page to get info
 # print the name and price of the product on the terminal
-elemName = soup.select_one('#root > div > div > section.quotePageSnapshot > div.pseudoMainContent > div.snapshot__0569338b.snapshot > section.snapshotOverview__d5769afc.up__a7674eca > section > section.company__c1979f17 > div > h1')
-print(elemName)
+#elemName = soup.select_one('#root > div > div > section.quotePageSnapshot > div.pseudoMainContent > div.snapshot__0569338b.snapshot > section.snapshotOverview__d5769afc.up__a7674eca > section > section.company__c1979f17 > div > h1')
+#print(elemName)
+print(soup.find_all(class_='tutorial-image-mobile')[0].get_text())
 
 #elemPrice = soup.find('span', attrs={'class': 'priceText__1853e8a5'})
 #print(elemPrice)
