@@ -20,7 +20,7 @@ browser.get('https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=3&cad
 emailElem = browser.find_element_by_class_name('whsOnd')
 
 # TO-DO 5: Fill in the email address
-emailElem.send_keys('Your email')
+emailElem.send_keys('myEmail')
 
 # TO-DO 6: Click Next
 emailNextButtonElem = browser.find_element_by_class_name('RveJvd')
@@ -32,24 +32,29 @@ time.sleep(1.5)
 passwordElem = browser.find_element_by_class_name('zHQkBf')
 
 # TO-DO 8: Fill in the password
-passwordElem.send_keys('Your password')
+passwordElem.send_keys('myPassword')
 
 # TO-DO 9: Click Next
 passwordNextElem = browser.find_element_by_class_name('CwaK9')
 
 # passwordElem.find_element_by_link_text('Next')
 passwordNextElem.click()
+time.sleep(5)
 
 #--------------------------
 #SIGNING OUT
 #--------------------------
 
 # TO-DO 10: Find the element to the user profile
-userProfileELem = browser.find_element_by_class_name('gb_na')
+userProfileElem = browser.find_element_by_class_name('gb_Ha')
 
 # TO-DO 11: Click the user profile
-userProfileELem.click()
+userProfileElem.click()
 
 # TO-DO 12: Find the element to the sign out text link
-
+signoutElem = browser.find_element_by_id('gb_71')
 # TO-DO 13: Sign out
+signoutElem.click()
+
+time.sleep(6)
+browser.close()
