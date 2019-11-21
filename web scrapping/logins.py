@@ -18,16 +18,22 @@
 
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-import time
+import time, datetime
+from time import ctime 
 
 
 browser = webdriver.Chrome()
 browser.maximize_window()
 
-#--------------
-# TAB 1: GMAIL
-# -------------
+#--------------------
+# SIGN IN
+#--------------------
+
+       
+            # TAB 1: GMAIL
+           
 def gmailLogin():
+    # Sign In
     browser.get('https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=3&cad=rja&uact=8&ved=2ahUKEwjPyM2w_NzlAhXZad4KHenwBXcQFjACegQIARAB&url=https%3A%2F%2Faccounts.google.com%2Fb%2F1%2FAddMailService&usg=AOvVaw0XvudbS8_frp7iekcbIOHZ')
     emailElem = browser.find_element_by_class_name('whsOnd')
     emailElem.clear()
@@ -43,13 +49,14 @@ def gmailLogin():
     time.sleep(3)
     browser.save_screenshot('gmail.png')
 
-#--------------
-# TAB 2: SLACK
-#--------------
+                   
+                    # TAB 2: SLACK
+                   
 def slackLogin():
     browser.get('https://tinkeredu.slack.com')
     slackEmailElem = browser.find_element_by_id('email')
     slackEmailElem.clear()
+    time.sleep(1.5)
     slackEmailElem.send_keys('harrison@tinkeredu.net')
     slackPasswordElem = browser.find_element_by_id('password')
     slackPasswordElem.clear()
@@ -58,11 +65,22 @@ def slackLogin():
     time.sleep(5)
     browser.save_screenshot('slacksignin.png')
 
+    # Post my commute time
+    commuteTimeElem= browser.find_element_by_link_text('commute-time-record')
+    commuteTimeElem.click()
+    commuteTimeElem.clear
+    #commute = print(ctime)
+    commuteTimeElem.send_keys(str(ctime))
+    time.sleep(1.5)
+    commuteTimeElem.send_keys(Keys.ENTER)
 
 
-#--------------
-# TAB 2: TRELLO
-#--------------
+
+
+
+              
+                # TAB 2: TRELLO
+             
 def trelloLogin():
     browser.get('https://trello.com/login')
     loginWithGmailElem = browser.find_element_by_id('google-link')
@@ -70,13 +88,9 @@ def trelloLogin():
     time.sleep(5)
     browser.save_screenshot('trellologin.png')
 
+#gmailLogin()
 
-
-
-
-gmailLogin()
-
-#------Switching tabs--------
+#------Switching tabs to slack--------
 
 browser.execute_script("window.open('');")
 browser.switch_to_window(browser.window_handles[1])
@@ -84,23 +98,56 @@ time.sleep(1.5)
 
 slackLogin()
 
-#------Switching tabs--------
+#------Switching tabs trello--------
 
 browser.execute_script("window.open('');")
 browser.switch_to_window(browser.window_handles[2])
 time.sleep(1.5)
 
-trelloLogin()
+#trelloLogin()
+
+#---------------------------------
+#DURATION TO BEGIN LOGGING OUT  
+#---------------------------------
+#startOfDay = ctime()
+#endOfDay = ctime()
+
+
+
+#--------------------
+# SIGN OUT
+#--------------------
+
+def gmailLogOut():
+    userProfileElem = browser.find_element_by_class_name('gb_Ha')
+    userProfileElem.click()
+    signoutElem = browser.find_element_by_id('gb_71')
+    signoutElem.click()
+
+def slackLogOut():
+    pass
+
+
+def trelloLogOut():
+    pass
+
+
+
 
 #------ Switching through the tabs --------
 for tabs in range(3):
     browser.switch_to_window(browser.window_handles[tabs])
     time.sleep(1.5)
-    #browser.switch_to_window(browser.window_handles[1])
-    #time.sleep(1.5)
-    #browser.switch_to_window(browser.window_handles[2])
-
-
-time.sleep(3)
-browser.quit()
+    if browser.switch_to_window(browser.window_handles[tabs]) == browser.switch_to_window(browser.window_handles[0]):
+        gmailLogOut()
+        time.sleep(1.5)
+        browser.close()
+    elif browser.switch_to_window(browser.window_handles[tabs]) == browser.switch_to_window(browser.window_handles[1]):
+        slackLogOut()
+        time.sleep(1.5)
+        browser.close()
+    else:
+        trelloLogOut()
+        time.sleep(1.5)
+        browser.close()
 
