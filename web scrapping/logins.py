@@ -93,12 +93,12 @@ time.sleep(1.5)
 trelloLogin()
 
 #------ Switching through the tabs --------
-for tabs in range(2):
-    browser.switch_to_window(browser.window_handles[0])
+for tabs in range(3):
+    browser.switch_to_window(browser.window_handles[tabs])
     time.sleep(1.5)
-    browser.switch_to_window(browser.window_handles[1])
-    time.sleep(1.5)
-    browser.switch_to_window(browser.window_handles[2])
+    #browser.switch_to_window(browser.window_handles[1])
+    #time.sleep(1.5)
+    #browser.switch_to_window(browser.window_handles[2])
 
 
 time.sleep(3)
