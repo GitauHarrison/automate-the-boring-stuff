@@ -37,13 +37,13 @@ def gmailLogin():
     browser.get('https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=3&cad=rja&uact=8&ved=2ahUKEwjPyM2w_NzlAhXZad4KHenwBXcQFjACegQIARAB&url=https%3A%2F%2Faccounts.google.com%2Fb%2F1%2FAddMailService&usg=AOvVaw0XvudbS8_frp7iekcbIOHZ')
     emailElem = browser.find_element_by_class_name('whsOnd')
     emailElem.clear()
-    emailElem.send_keys('harrison@tinkeredu.net')
+    emailElem.send_keys('your email')
     emailNextButtonElem = browser.find_element_by_class_name('RveJvd')
     emailNextButtonElem.click()
     time.sleep(1.5)
     passwordElem = browser.find_element_by_class_name('zHQkBf')
     passwordElem.clear()
-    passwordElem.send_keys('S!mps0n@24..,,')
+    passwordElem.send_keys('your password')
     passwordNextElem = browser.find_element_by_class_name('CwaK9')
     passwordNextElem.click()
     time.sleep(3)
@@ -60,7 +60,7 @@ def slackLogin():
     slackEmailElem.send_keys('harrison@tinkeredu.net')
     slackPasswordElem = browser.find_element_by_id('password')
     slackPasswordElem.clear()
-    slackPasswordElem.send_keys('Turf2013W!n..')
+    slackPasswordElem.send_keys('your password')
     signInElem = browser.find_element_by_id('signin_btn').submit()
     time.sleep(5)
     browser.save_screenshot('slacksignin.png')
@@ -70,15 +70,11 @@ def slackLogin():
     commuteTimeElem.click()
     commuteTimeElem.clear
     #commute = print(ctime)
-    commuteTimeElem.send_keys(str(ctime))
+    commuteTimeElem.send_keys(str(ctime()))
     time.sleep(1.5)
     commuteTimeElem.send_keys(Keys.ENTER)
 
-
-
-
-
-              
+     
                 # TAB 2: TRELLO
              
 def trelloLogin():
@@ -88,7 +84,7 @@ def trelloLogin():
     time.sleep(5)
     browser.save_screenshot('trellologin.png')
 
-#gmailLogin()
+gmailLogin()
 
 #------Switching tabs to slack--------
 
@@ -104,7 +100,7 @@ browser.execute_script("window.open('');")
 browser.switch_to_window(browser.window_handles[2])
 time.sleep(1.5)
 
-#trelloLogin()
+trelloLogin()
 
 #---------------------------------
 #DURATION TO BEGIN LOGGING OUT  
@@ -125,11 +121,13 @@ def gmailLogOut():
     signoutElem.click()
 
 def slackLogOut():
-    pass
+    tinkerLogOutElem = browser.find_element_by_id('#team-menu-trigger').click()
+    #incomplete
 
 
 def trelloLogOut():
-    pass
+    trelloAvatorElem = browser.find_element_by_class_name('_2ZNy4w8Nfa58d1').click()
+    #incomplete
 
 
 
